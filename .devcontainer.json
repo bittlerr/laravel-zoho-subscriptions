@@ -1,0 +1,30 @@
+{
+    "name": "zoho-subscriptions",
+    "image": "php:8.1-fpm",
+    "features": {
+        "ghcr.io/devcontainers/features/git:1": {},
+        "ghcr.io/devcontainers/features/php:1": {
+            "version": "8.1"
+        }
+    },
+    "workspaceFolder": "/var/www",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/var/www,type=bind",
+    "postCreateCommand": "apt-get update && apt-get install unzip",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "mattedesign.laravel-pack",
+                "dbaeumer.vscode-eslint",
+                "octref.vetur",
+                "vscode-icons-team.vscode-icons",
+                "syler.sass-indented",
+                "esbenp.prettier-vscode",
+                "wix.vscode-import-cost",
+                "georgykurian.laravel-ide-helper",
+                "junstyle.php-cs-fixer",
+                "eamodio.gitlens"
+            ]
+        }
+    },
+    "remoteUser": "root"
+}
