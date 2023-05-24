@@ -15,6 +15,7 @@ class DB extends Base
         $this->model = Integration::firstOrNew([
             'name' => $integration
         ]);
+        $this->integration = $integration;
         $this->setFromModel($this->model);
     }
 
@@ -43,12 +44,31 @@ class DB extends Base
     public function save()
     {
         $this->model->accessToken = $this->accessToken();
-        $this->model->refreshToken = $this->refreshToken();
         $this->model->expires = $this->expires();
         $this->model->additional = $this->additional();
+
+        if ($this->refreshToken()) {
+            $this->model->refreshToken = $this->refreshToken();
+        }
 
         $this->model->save();
 
         return $this;
+    }
+
+    public function updateAccessToken($accessToken)
+    {
+        $this->set([
+            'accessToken' => $accessToken->getToken(),
+            'expires' => $accessToken->getExpires(),
+        ]);
+
+        if ($accessToken->getRefreshToken()) {
+            $this->set([
+                'refreshToken' => $accessToken->getRefreshToken(),
+            ]);
+        }
+
+        return $this->save();
     }
 }
