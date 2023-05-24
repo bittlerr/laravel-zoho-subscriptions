@@ -61,9 +61,9 @@ class StoreCustomer extends PersistResource
         'is_tds_registered' => 'nullable|bool',
         'vat_reg_no' => 'nullable|string',
         'is_taxable' => 'nullable|bool',
-        'default_templates.invoice_template_id' => 'required|string',
-        'default_templates.creditnote_template_id' => 'required|string',
-        'custom_fields.*.label' => 'required|string',
-        'custom_fields.*.value' => 'required|string',
+        'default_templates.invoice_template_id' => 'sometimes|required|string',
+        'default_templates.creditnote_template_id' => 'sometimes|required|string',
+        'custom_fields.*.label' => 'sometimes|required|string',
+        'custom_fields.*.value' => 'sometimes|required|string',
     ];
 }
