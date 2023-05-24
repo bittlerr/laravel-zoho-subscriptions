@@ -8,13 +8,13 @@ class Customer extends Model
 {
     protected $insertResource = 'ZohoSubscriptions\Requests\StoreCustomer';
 
-    // protected $updateResource = 'ZohoSubscriptions\Requests\UpdateCustomer';
-
     protected $endPoint = 'customers';
 
     protected $allowedMethods = ['find', 'get', 'post', 'delete'];
 
     protected $apiMultipleDataField = 'customers';
+
+    protected $primaryKey = 'customer_id';
 
     public function getApiMultipleDataField()
     {
