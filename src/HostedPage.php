@@ -8,7 +8,7 @@ class HostedPage extends Model
 {
     protected $endPoint = 'hostedpages';
 
-    protected $allowedMethods = ['get'];
+    protected $allowedMethods = ['find', 'get'];
 
     protected $apiMultipleDataField = 'hostedpages';
 
