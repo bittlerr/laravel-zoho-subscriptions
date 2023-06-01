@@ -11,7 +11,7 @@ class Subscription extends Model
 
     protected $endPoint = 'subscriptions';
 
-    protected $allowedMethods = ['get', 'post', 'delete'];
+    protected $allowedMethods = ['find', 'get', 'post', 'delete'];
 
     protected $apiMultipleDataField = 'subscriptions';
 
@@ -23,5 +23,14 @@ class Subscription extends Model
     public function customer()
     {
         return $this->hasOne(Customer::class);
+    }
+
+    public function cancel(bool $cancel_at_end = false)
+    {
+        if ($this->exists()) {
+            return $this->newQuery()
+                ->sendRequest('post', ['subscriptions/' . $this->subscription['subscription_id'] . '/cancel', ['cancel_at_end' => $cancel_at_end]])
+                ->successful();
+        }
     }
 }
