@@ -20,11 +20,6 @@ class Subscription extends Model
         return $this->apiMultipleDataField;
     }
 
-    public function customer()
-    {
-        return $this->hasOne(Customer::class);
-    }
-
     public function cancel(bool $cancel_at_end = false)
     {
         if ($this->exists()) {

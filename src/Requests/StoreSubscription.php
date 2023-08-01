@@ -8,8 +8,8 @@ class StoreSubscription extends PersistResource
 {
     protected $persistAttributes = [
         'id' => '',
-        'customer.display_name' => 'required_without:customer_id|string',
-        'customer.email' => 'required_without:customer_id|string',
+        'customer.display_name' => 'sometimes|required|string',
+        'customer.email' => 'sometimes|required|string',
         'customer.salutation' => 'nullable|string',
         'customer.first_name' => 'nullable|string',
         'customer.last_name' => 'nullable|string',
@@ -65,7 +65,7 @@ class StoreSubscription extends PersistResource
         'customer.default_templates.creditnote_template_id' => 'sometimes|required|string',
         'customer.custom_fields.*.label' => 'sometimes|required|string',
         'customer.custom_fields.*.value' => 'sometimes|required|string',
-        'customer_id' => 'required_without:customer|string',
+        'customer_id' => 'sometimes|required|string',
         'payment_terms' => 'nullable|integer',
         'payment_terms_label' => 'nullable|string',
         'custom_fields' => 'nullable|array',
