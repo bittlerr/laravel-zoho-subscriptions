@@ -7,10 +7,15 @@ use ZohoSubscriptions\Support\Model;
 class Customer extends Model
 {
     protected $insertResource = 'ZohoSubscriptions\Requests\StoreCustomer';
+    protected $updateResource = 'ZohoSubscriptions\Requests\UpdateCustomer';
 
     protected $endPoint = 'customers';
 
-    protected $allowedMethods = ['find', 'get', 'post', 'delete'];
+    protected $apiDataField = 'customer';
+
+    protected $allowedMethods = ['find', 'get', 'post', 'put', 'delete'];
+
+    protected $updateMethod = 'put';
 
     protected $apiMultipleDataField = 'customers';
 

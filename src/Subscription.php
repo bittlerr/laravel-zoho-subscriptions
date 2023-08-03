@@ -11,7 +11,11 @@ class Subscription extends Model
 
     protected $endPoint = 'subscriptions';
 
-    protected $allowedMethods = ['find', 'get', 'post', 'delete'];
+    protected $apiDataField = 'subscription';
+
+    protected $allowedMethods = ['find', 'get', 'post', 'put', 'delete'];
+
+    protected $updateMethod = 'put';
 
     protected $apiMultipleDataField = 'subscriptions';
 
