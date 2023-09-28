@@ -13,12 +13,15 @@ class Entry extends ApiEntry
     {
         $config = config('zoho');
         $class = $config['tokenModel'];
+        $organizationId = $config['organizationId'];
         $token = new $class('zoho');
 
         if ($token->hasExpired()) {
             $token = $token->renewToken();
         }
 
-        return Client::baseUrl($config['baseUrl'])->withToken($token->accessToken());
+        return Client::baseUrl($config['baseUrl'])
+            ->withHeaders(['X-com-zoho-subscriptions-organizationid' => $organizationId])
+            ->withToken($token->accessToken());
     }
 }

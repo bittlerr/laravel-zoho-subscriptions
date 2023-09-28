@@ -3,6 +3,7 @@
 return [
     'baseUrl' => 'https://www.zohoapis.com/subscriptions/v1',
     'identityUrl' => 'https://accounts.zoho.com/',
+    'organizationId' => env('ZOHO_ORGANIZATION_ID'),
     'oauth2' => [
         'clientId' => env('ZOHO_CLIENT_ID'),
         'clientSecret' => env('ZOHO_CLIENT_SECRET'),
