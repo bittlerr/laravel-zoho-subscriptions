@@ -28,7 +28,7 @@ class Subscription extends Model
     {
         if ($this->exists()) {
             return $this->newQuery()
-                ->sendRequest('post', ['subscriptions/' . $this->subscription['subscription_id'] . '/cancel', ['cancel_at_end' => $cancel_at_end]])
+                ->sendRequest('post', ['subscriptions/' . $this->subscription_id . '/cancel', ['cancel_at_end' => $cancel_at_end]])
                 ->successful();
         }
     }
