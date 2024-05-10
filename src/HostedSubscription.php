@@ -6,7 +6,7 @@ use ZohoSubscriptions\Support\Model;
 
 class HostedSubscription extends Model
 {
-    protected $insertResource = 'ZohoSubscriptions\Requests\StoreSubscription';
+    protected $insertResource = 'ZohoSubscriptions\Requests\StoreHostedSubscription';
 
     protected $endPoint = 'hostedpages/newsubscription';
 

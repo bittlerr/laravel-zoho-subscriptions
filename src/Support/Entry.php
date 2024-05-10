@@ -8,6 +8,12 @@ use ZohoSubscriptions\Facades\Client;
 class Entry extends ApiEntry
 {
     protected $modelNamespace = '\ZohoSubscriptions\\';
+    protected $perPageField = 'per_page';
+    protected $resultsPageField = 'page_context.page';
+    protected $resultsPageSizeField = 'page_context.per_page';
+    protected $resultsTotalRecordsField = 'page_context.total';
+    protected $maxPaginationRecords = '200';
+    protected $defaultPaginationRecords = '200';
 
     public function newRequest()
     {
