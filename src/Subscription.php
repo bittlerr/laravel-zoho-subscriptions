@@ -24,11 +24,17 @@ class Subscription extends Model
         return $this->apiMultipleDataField;
     }
 
-    public function cancel(bool $cancel_at_end = false)
+    public function cancel(string $reason, bool $cancel_at_end = false)
     {
         if ($this->exists()) {
             return $this->newQuery()
-                ->sendRequest('post', ['subscriptions/' . $this->subscription_id . '/cancel', ['cancel_at_end' => $cancel_at_end]])
+                ->sendRequest('post', [
+                    'subscriptions/' . $this->subscription_id . '/cancel',
+                    [
+                        'reason' => $reason,
+                        'cancel_at_end' => $cancel_at_end,
+                    ]
+                ])
                 ->successful();
         }
     }
