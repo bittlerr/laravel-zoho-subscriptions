@@ -5,6 +5,7 @@ namespace ZohoSubscriptions\Tests\Feature;
 use MacsiDigital\API\Contracts\Relation;
 use ZohoSubscriptions\Customer;
 use ZohoSubscriptions\Subscription;
+use ZohoSubscriptions\Support\Entry;
 use ZohoSubscriptions\Tests\TestCase;
 
 class CustomerSmokeTest extends TestCase
@@ -52,5 +53,14 @@ class CustomerSmokeTest extends TestCase
         $customer->reference_id = 'ref-42';
 
         $this->assertSame('ref-42', $customer->reference_id);
+    }
+
+    // Regression: the 'zoho-subscriptions' container binding used to point
+    // at a Contracts\ZohoSubscriptions interface that itself extended a
+    // Facade class — syntactically broken but unreferenced until L12's
+    // optimized autoloader started resolving it.
+    public function test_zoho_subscriptions_binding_resolves_to_entry(): void
+    {
+        $this->assertInstanceOf(Entry::class, $this->app->make('zoho-subscriptions'));
     }
 }

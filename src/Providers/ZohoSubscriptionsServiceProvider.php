@@ -31,8 +31,7 @@ class ZohoSubscriptionsServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../../config/config.php', 'zoho');
 
         // Register the main class to use with the facade
-        $this->app->singleton('zoho-subscriptions', 'ZohoSubscriptions\Contracts\ZohoSubscriptions');
-        $this->app->bind('ZohoSubscriptions\Contracts\ZohoSubscriptions', 'ZohoSubscriptions\Support\Entry');
+        $this->app->singleton('zoho-subscriptions', 'ZohoSubscriptions\Support\Entry');
 
         $this->app->bind('zoho-subscriptions.client', 'ZohoSubscriptions\Support\Client');
     }
